@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname , "public")))
 app.use('/api/users' , require('./routes/createUser'))
 app.use('/api/departments' , require('./routes/createDepartment'))
 app.use('/api/departments' , require('./routes/createDepartment'))
-
+app.use('/api/employee',require('./routes/getEmployee'))
 app.use('/api/auth' , require('./routes/login'))
 
 const port = process.env.PORT || 3000 

@@ -14,6 +14,7 @@ router.post('/login', async (req, res) => {
 
     if (!user) { return res.status(404).json({ massage: 'invalid cradentials' }) }
     if(user.password === password){
+        console.log(user)
         return res.status(201).json({ massage: "success" }, user)
     }
     // try {
