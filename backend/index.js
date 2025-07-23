@@ -16,6 +16,9 @@ app.use('/api/departments' , require('./routes/createDepartment'))
 app.use('/api/departments' , require('./routes/createDepartment'))
 app.use('/api/employee',require('./routes/getEmployee'))
 app.use('/api/auth' , require('./routes/login'))
+app.use('/api/announcement', require('./routes/anouncements'))
+app.use('/api/attendance', require('./routes/attendence'))
+
 
 const port = process.env.PORT || 3000 
 app.listen(port, () => {

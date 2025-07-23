@@ -24,10 +24,10 @@ const userSchema = new mongoose.Schema({
   },
 
   jobDetails: {
-    department: String, // e.g., "IT", "HR", "Finance"
+    department: String, 
     designation: String,
     joiningDate: Date,
-    managerId: String // e.g., "John Doe", "MGR102", or any placeholder
+    managerId: String
   },
 
   salaryDetails: {
