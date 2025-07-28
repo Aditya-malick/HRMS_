@@ -45,11 +45,10 @@ router.get('/by-department/:departmentName', async (req, res) => {
   try {
     const employees = await User.find({ "jobDetails.department": department });
     const employeeIds = employees.map(emp => emp._id); //Use `_id`, not employeeId
-
-    const attendanceRecords = await Attendance.find({ employeeId: { $in: employeeIds } })
-      .populate('employeeId', 'firstName lastName jobDetails.department');
-
-    res.status(200).json({ message: "Attendance data fetched", data: attendanceRecords });
+    console.log(employeeIds)
+    const attendanceRecords = await Attendance.find({ employeeId: { $in: employeeIds } }).sort({ date: -1, checkIn: 1 })
+    console.log(attendanceRecords)
+    res.status(200).json( attendanceRecords);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed to fetch attendance", error: err.message });
@@ -60,13 +59,14 @@ router.get('/by-department/:departmentName', async (req, res) => {
 // GET - Fetch attendance for an employee
 router.get('/employee/:id', async (req, res) => {
   try {
-    const attendance = await Attendance.find({ employeeId: req.params.id }).sort({ date: -1 });
+    const employee = await User.findOne({ employeeId: req.params.id });
+    if (!employee) return res.status(404).json({ error: 'Employee not found' });
+
+    const attendance = await Attendance.find({ employeeId: employee._id }).sort({ date: -1 });
     res.status(200).json(attendance);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch attendance' });
   }
 });
-
-
 
 module.exports = router;

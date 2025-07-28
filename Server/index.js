@@ -18,6 +18,10 @@ app.use('/api/employee',require('./routes/getEmployee'))
 app.use('/api/auth' , require('./routes/login'))
 app.use('/api/announcement', require('./routes/anouncements'))
 app.use('/api/attendance', require('./routes/attendence'))
+app.use('/api/employee', require('./routes/getEmployee'))
+app.use('/api/leave',require('./routes/leave'))
+
+
 
 
 const port = process.env.PORT || 3000 
