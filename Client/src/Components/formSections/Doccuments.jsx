@@ -7,7 +7,7 @@ const DocumentUpload = ({ formData, setFormData }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full p-4">
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll overscroll-contain ">
       <h2 className="text-xl font-semibold mb-2">Document Upload</h2>
 
       <label className="flex flex-col">

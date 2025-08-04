@@ -8,9 +8,7 @@ const JobDetails = ({ formData, setFormData }) => {
   };
 
   return (
-    <div className="space-y-6 p-6 bg-white shadow rounded-2xl">
-      <h2 className="text-2xl font-semibold text-gray-700">🏢 Job Details</h2>
-
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">Department</label>

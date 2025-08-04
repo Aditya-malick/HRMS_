@@ -8,7 +8,7 @@ const ExperienceDetails = ({ formData, setFormData }) => {
 
 
   return (
-    <div className="space-y-6 p-4">
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll">
 
         <div  className="border p-4 rounded-md shadow-sm space-y-4">
 

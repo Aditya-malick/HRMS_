@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactDetails = ({ formData, setFormData }) => {
   return (
-    <div className="space-y-4 p-4">
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll">
       <div>
         <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
         <input

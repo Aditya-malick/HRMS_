@@ -1,7 +1,7 @@
 // Separate forms for each section of the employee schema using Tailwind CSS
 // Example shows PersonalDetailsForm - you can follow the same structure for other sections
 
-import React from 'react';
+import React from "react";
 
 const PersonalDetails = ({ formData, setFormData }) => {
   const handleChange = (e) => {
@@ -9,15 +9,17 @@ const PersonalDetails = ({ formData, setFormData }) => {
     setFormData({
       ...formData,
       [name]: value,
-    },
-    );
+    });
   };
 
   return (
-    <div className=" p-4 bg-white shadow-lg rounded-2xl">
-      <div className='flex'>
-        <div>
-          <label className="text-xl col-span-full font-bold text-gray-800 mt-2">First Name</label>
+    <div className=" p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll overscroll-contain ">
+
+      <div className="flex m-3 gap-4">
+        <div className="w-[50%]">
+          <label className="text-xl col-span-full font-bold text-gray-800 mt-2">
+            First Name
+          </label>
           <input
             name="firstName"
             value={formData.firstName}
@@ -26,8 +28,10 @@ const PersonalDetails = ({ formData, setFormData }) => {
             className="p-2 border rounded-xl mr-2 w-full"
           />
         </div>
-        <div>
-          <label className="text-xl col-span-full font-bold text-gray-800 mt-2">Last Name</label>
+        <div className="w-[50%]">
+          <label className="text-xl col-span-full font-bold text-gray-800 mt-2">
+            Last Name
+          </label>
           <input
             name="lastName"
             value={formData.lastName}
@@ -38,9 +42,11 @@ const PersonalDetails = ({ formData, setFormData }) => {
         </div>
       </div>
 
-      <div className='flex w-full'>
-        <div className='w-[50%]'>
-          <label className="text-xl col-span-full font-bold text-gray-800 mt-2">Gender</label>
+      <div className="flex m-3 gap-4">
+        <div className="w-[50%] ">
+          <label className="text-xl col-span-full font-bold text-gray-800 ">
+            Gender
+          </label>
           <select
             name="gender"
             value={formData.gender}
@@ -53,9 +59,11 @@ const PersonalDetails = ({ formData, setFormData }) => {
             <option value="Other">Other</option>
           </select>
         </div>
-        <div className='w-[50%]'>
 
-          <label className="text-xl col-span-full font-bold text-gray-800 mt-2">Date of Birth</label>
+        <div className="w-[50%]">
+          <label className="text-xl block font-bold text-gray-800 ">
+            Date of Birth
+          </label>
           <input
             type="date"
             name="dob"
@@ -66,73 +74,106 @@ const PersonalDetails = ({ formData, setFormData }) => {
         </div>
       </div>
 
+      <div className="flex m-3 gap-4">
+        <div className="w-[50%]">
+          <label className="text-xl block font-bold text-gray-800">
+            Blood Group
+          </label>
+          <input
+            name="bloodGroup"
+            value={formData.bloodGroup}
+            onChange={handleChange}
+            placeholder="Blood Group"
+            className="p-2 border rounded-xl w-full"
+          />
+        </div>
+        <div className="w-[50%]">
+          <label className="text-xl block font-bold text-gray-800">Merital Status</label>
+          <select
+            name="maritalStatus"
+            value={formData.maritalStatus}
+            onChange={handleChange}
+            className="p-2 border rounded-xl block"
+          >
+            <option value="">Marital Status</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+          </select>
+        </div>
+      </div>
 
-      <label className="text-xl col-span-full font-bold text-gray-800 mt-2">Blood Group</label>
-      <input
-        name="bloodGroup"
-        value={formData.bloodGroup}
-        onChange={handleChange}
-        placeholder="Blood Group"
-        className="p-2 border rounded-xl"
-      />
-      <select
-        name="maritalStatus"
-        value={formData.maritalStatus}
-        onChange={handleChange}
-        className="p-2 border rounded-xl"
-      >
-        <option value="">Marital Status</option>
-        <option value="Single">Single</option>
-        <option value="Married">Married</option>
-      </select>
+      <div className="flex m-3 gap-4">
+        <div className="w-[50%]">
+          <label className="text-xl block font-bold text-gray-800 ">
+            Nationality
+          </label>
+          <input
+            name="nationality"
+            value={formData.nationality}
+            onChange={handleChange}
+            placeholder="Nationality"
+            className="p-2 border rounded-xl block w-full"
+          />
+        </div>
+        <div className="w-[50%]"> 
+          <label className="text-xl  font-bold text-gray-800 ">
+            Religion
+          </label>
+          <input
+            name="religion"
+            value={formData.religion}
+            onChange={handleChange}
+            placeholder="Religion"
+            className="p-2 border rounded-xl block w-full"
+          />
+        </div>
+      </div>
 
-      <label className="text-xl col-span-full font-bold text-gray-800 mt-2">Nationality</label>
-      <input
-        name="nationality"
-        value={formData.nationality}
-        onChange={handleChange}
-        placeholder="Nationality"
-        className="p-2 border rounded-xl"
-      />
+      <div className="flex m-3 gap-4">
+        <div className="w-[50%]">
+          <label className="text-xl Block font-bold text-gray-800 mt-2">
+            Father's Name
+          </label>
+          <input
+            name="fatherName"
+            value={formData.fatherName}
+            onChange={handleChange}
+            placeholder="Father's Name"
+            className="p-2 border rounded-xl Block w-full"
+          />
+        </div>
 
-      <label className="text-xl col-span-full font-bold text-gray-800 mt-2">Religion</label>
-      <input
-        name="religion"
-        value={formData.religion}
-        onChange={handleChange}
-        placeholder="Religion"
-        className="p-2 border rounded-xl"
-      />
+        <div className="w-[50%]">
+          <label className="text-xl Block font-bold text-gray-800 mt-2">
+            Aadhaar Number
+          </label>
+          <input
+            name="aadhaarNumber"
+            value={formData.aadhaarNumber}
+            onChange={handleChange}
+            placeholder="Aadhaar Number"
+            className="p-2 border rounded-xl Block w-full"
+          />
+        </div>
+      </div>
 
-      <label className="text-xl col-span-full font-bold text-gray-800 mt-2">Father's Name</label>
-      <input
-        name="fatherName"
-        value={formData.fatherName}
-        onChange={handleChange}
-        placeholder="Father's Name"
-        className="p-2 border rounded-xl"
-      />
+      <div className="flex m-3 gap-4">
+        <div className="w-[50%]">
 
-      <label className="text-xl col-span-full font-bold text-gray-800 mt-2">Aadhaar Number</label>
-      <input
-        name="aadhaarNumber"
-        value={formData.aadhaarNumber}
-        onChange={handleChange}
-        placeholder="Aadhaar Number"
-        className="p-2 border rounded-xl"
-      />
-
-      <label className="text-xl col-span-full font-bold text-gray-800 mt-2">PAN Number</label>
-      <input
-        name="panNumber"
-        value={formData.panNumber}
-        onChange={handleChange}
-        placeholder="PAN Number"
-        className="p-2 border rounded-xl"
-      />
-    </div>
+        <label className="text-xl block font-bold text-gray-800 mt-2">
+          PAN Number
+        </label>
+        <input
+          name="panNumber"
+          value={formData.panNumber}
+          onChange={handleChange}
+          placeholder="PAN Number"
+          className="p-2 border rounded-xl"
+        />
+        </div>
+      </div>
+</div>
   );
-}
+};
 
 export default PersonalDetails;
-
