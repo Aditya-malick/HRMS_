@@ -1,11 +1,10 @@
 const express = require('express');
 const bcrypt = require("bcryptjs");
-const mongoose = require("mongoose");
 const router = express.Router();
-const UserModle = require('../models/User');
+const Employee = require('../models/User'); // Assuming schema filename is User.js
 
 router.post('/create', async (req, res) => {
-  console.log(" Received data:", req.body);
+  console.log("📥 Received data:", req.body);
   const {
     employeeId, firstName, lastName, dob, gender,
     email, phone,
@@ -13,13 +12,14 @@ router.post('/create', async (req, res) => {
     location, password, base, allowances, deductions, status
   } = req.body;
 
-  if (!email || !employeeId || !firstName || !password) {
+  // Validation (Basic)
+  if (!data.employeeId || !data.firstName || !data.dob || !data.email || !data.password) {
     return res.status(400).json({ message: "Required fields missing!" });
   }
 
   try {
-    const hash = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(password, hash);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(data.password, salt);
 
     const user = await UserModle.create({
       employeeId,
@@ -42,9 +42,9 @@ router.post('/create', async (req, res) => {
       status
     });
 
-res.status(200).json({ message: "User created successfully", user });
+res.status(201).json({ message: "User created successfully", user, role });
   } catch (err) {
-    console.error("Error creating user:", err);
+    console.error("❌ Error creating user:", err);
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
