@@ -106,7 +106,7 @@ const LeavePage = () => {
                 leaves.map((leave, idx) => (
                   <tr key={idx} className="transition-all hover:bg-gray-50">
                     <td className="px-4 py-2 border-b">{new Date(leave.date).toLocaleDateString()}</td>
-                    <td className="px-4 py-2 border-b">{leave.reason}</td>
+                    <td className="px-4 py-2 border-b">{leave.title}</td>
                     <td className="px-4 py-2 border-b">
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-medium

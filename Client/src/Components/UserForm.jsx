@@ -37,7 +37,7 @@ const CreateUserForm = () => {
     
 
 
-    if (res.ok) {
+    if (res) {
       alert("User created successfully!");
     } else {
       alert(res.message || "Error creating user");
@@ -75,10 +75,8 @@ const CreateUserForm = () => {
 
         <input type="text" name="department" placeholder="Department (ID or Name)" className="input-style" value={formData.department} onChange={handleChange} />
         <input type="text" name="designation" placeholder="Designation" className="input-style" value={formData.designation} onChange={handleChange} />
-
-        {formData.role === "employee" && (
-          <input type="text" name="managerId" placeholder="Manager ID (Optional)" className="input-style" value={formData.managerId} onChange={handleChange} />
-        )}
+        
+        <input type="text" name="managerId" placeholder="Manager ID (Optional)" className="input-style" value={formData.managerId} onChange={handleChange} />
 
         <input type="text" name="location" placeholder="Location / Address" className="input-style" value={formData.location} onChange={handleChange} />
         <input type="password" name="password" placeholder="Create Password" className="input-style" value={formData.password} onChange={handleChange} />

@@ -33,12 +33,11 @@ function App() {
         <Route path='/EmployeeDashboard' element={<EmployeeDashboart />} />
         <Route path='/ManegerDashboard' element={<ManegerDashboard />} />
         <Route path='/employeelist/:departmentName' element={<Employeelist />} />
-        <Route path='/Attendance/:employeeId' element={<EmployeeAttendance />} />
+        <Route path='/Attendance' element={<EmployeeAttendance />} />
         <Route path='/EmployeeAttendance' element={<EmployeeAttendance />} />
         <Route path='/EmployeeDetails/:id' element={<EmployeeDetails />} />
         <Route path='/ApplyLeave' element={<ApplyLeave/>} />
         <Route path='/viewleave' element={<ManagerLeavePage/>} />
- 
       </Routes>
     </>
   )

@@ -24,7 +24,7 @@ const EmployeeDashboard = () => {
   };
 
   const handleAttendance = () => {
-    Navigate(`/Attendance/${user}`);
+    Navigate(`/Attendance`);
   };
  
 

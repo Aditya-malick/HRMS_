@@ -21,6 +21,7 @@ const Login = () => {
 
     try {
       const res = await axios.post('http://localhost:8080/api/auth/login', formData);
+      //Getting the data from backend
       const userData = res.data
       const info = {
         firstname: userData.firstName,

@@ -9,7 +9,6 @@ const EmployeeAttendance = () => {
   // Fetch attendance history on page load
   const fetchAttendance = async () => {
     try {
-      
       console.log(employeeId)
       const res = await axios.get(`http://localhost:8080/api/attendance/employee/${employeeId}`);
       console.log(res.data)
