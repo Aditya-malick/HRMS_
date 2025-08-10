@@ -2,59 +2,205 @@ import React from 'react';
 
 const SalaryDetails = ({ formData, setFormData }) => {
   return (
-    <div className="flex flex-col gap-4 w-full p-4">
-      <h2 className="text-xl font-semibold mb-2">Salary Details</h2>
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll">
+      <h2 className="mb-2 text-xl font-semibold">Salary Details</h2>
 
       <label className="flex flex-col">
-        Base Salary (₹)
+        gross *
         <input
+        name='gross'
           type="number"
-          value={formData.baseSalary}
+          value={formData.gross}
           onChange={(e) =>
-            setFormData({ ...formData, baseSalary: e.target.value })
+            setFormData({ ...formData, gross: e.target.value })
           }
           placeholder="Enter base salary"
-          className="border p-2 rounded"
+          className="p-2 border rounded"
+          required
         />
       </label>
 
       <label className="flex flex-col">
-        Bonus (₹)
+       basic *
         <input
+        name='basic'
           type="number"
-          value={formData.bonus}
+          value={formData.basic}
           onChange={(e) =>
-            setFormData({ ...formData, bonus: e.target.value })
+            setFormData({ ...formData, basic: e.target.value })
           }
           placeholder="Enter bonus amount"
-          className="border p-2 rounded"
+          className="p-2 border rounded"
+          required
         />
       </label>
 
       <label className="flex flex-col">
-        Deductions (₹)
+        hra *
         <input
+        name='hra'
           type="number"
-          value={formData.deductions}
+          value={formData.hra}
           onChange={(e) =>
-            setFormData({ ...formData, deductions: e.target.value })
+            setFormData({ ...formData, hra: e.target.value })
           }
           placeholder="Enter deductions"
-          className="border p-2 rounded"
+          className="p-2 border rounded"
+          required
         />
       </label>
 
       <label className="flex flex-col">
-        Net Salary (₹)
+        otherAllowances *
         <input
+        name='otherAllowances'
           type="number"
-          value={formData.netSalary}
+          value={formData.otherAllowances}
           onChange={(e) =>
-            setFormData({ ...formData, netSalary: e.target.value })
+            setFormData({ ...formData, otherAllowances: e.target.value })
           }
           placeholder="Enter net salary"
-          className="border p-2 rounded"
+          className="p-2 border rounded"
+          required
         />
+      </label>
+
+      <label className="flex flex-col">
+        bonuses *
+        <input
+        name='bonuses'
+          type="number"
+          value={formData.bonuses}
+          onChange={(e) =>
+            setFormData({ ...formData, bonuses: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+          required
+        />
+      </label>
+
+      <label className="flex flex-col">
+        pf *
+        <input
+        name='pf'
+          type="number"
+          value={formData.pf}
+          onChange={(e) =>
+            setFormData({ ...formData, pf: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+          required
+        />
+      </label>
+
+      <label className="flex flex-col">
+        esic *
+        <input
+        name='esic'
+          type="number"
+          value={formData.esic}
+          onChange={(e) =>
+            setFormData({ ...formData, esic: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+          required
+        />
+      </label>
+
+      <label className="flex flex-col">
+        netPay *
+        <input
+        name='netPay'
+          type="number"
+          value={formData.netPay}
+          onChange={(e) =>
+            setFormData({ ...formData, netPay: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+          required
+        />
+      </label>
+
+      <label className="flex flex-col">
+        accountNumber *
+        <input
+        name='accountNumber'
+          type="number"
+          value={formData.accountNumber}
+          onChange={(e) =>
+            setFormData({ ...formData, accountNumber: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+          required
+        />
+      </label>
+
+      <label className="flex flex-col">
+        ifsc *
+        <input
+        name='ifsc'
+          type="text"
+          value={formData.ifsc}
+          onChange={(e) =>
+            setFormData({ ...formData, ifsc: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+          required
+        />
+      </label>
+
+      <label className="flex flex-col">
+        bankName *
+        <input
+        name='bankName'
+          type="text"
+          value={formData.bankName}
+          onChange={(e) =>
+            setFormData({ ...formData, bankName: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+          required
+        />
+      </label>
+
+      <label className="flex flex-col">
+        uan 
+        <input
+        name='uan'
+          type="text"
+          value={formData.uan}
+          onChange={(e) =>
+            setFormData({ ...formData, uan: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+        />
+      </label>
+
+      <label className="flex flex-col">
+        paymentMode *
+        <select
+          name='paymentMode'
+          type="number"
+          value={formData.paymentMode}
+          onChange={(e) =>
+            setFormData({ ...formData, paymentMode: e.target.value })
+          }
+          placeholder="Enter net salary"
+          className="p-2 border rounded"
+          required
+        >
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Cheque">Cheque</option>
+            <option value="UPI">UPI</option>
+          </select>
       </label>
     </div>
   );

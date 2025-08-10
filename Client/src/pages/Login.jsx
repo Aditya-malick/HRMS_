@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../UserContext'
@@ -25,13 +26,13 @@ const Login = () => {
       const info = {
         firstname: userData.firstName,
         employeeId: userData.employeeId,
-        role: userData.role,
-        department: userData.jobDetails.department
+        role: userData.portalCredentialsGiven,
+        department: userData.department
       }
       localStorage.setItem("userInfo", JSON.stringify(info))
-      alert('Login successful!');
-      if(res.data.role === "HR")navigate('/HrDashboard')
-      else if(res.data.role === "Manager")navigate('/ManegerDashboard')
+      toast.success("✅ Login Successfull!", { position: "top-right" });
+      if(res.data.portalCredentialsGiven === "Admin")navigate('/HrDashboard')
+      else if(res.data.portalCredentialsGiven === "Manager")navigate('/ManegerDashboard')
       else navigate('/EmployeeDashboard')
 
     } catch (err) {

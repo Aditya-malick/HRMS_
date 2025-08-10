@@ -7,8 +7,8 @@ const DocumentUpload = ({ formData, setFormData }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full p-4">
-      <h2 className="text-xl font-semibold mb-2">Document Upload</h2>
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll overscroll-contain ">
+      <h2 className="mb-2 text-xl font-semibold">Document Upload</h2>
 
       <label className="flex flex-col">
         Upload Resume
@@ -16,7 +16,7 @@ const DocumentUpload = ({ formData, setFormData }) => {
           type="file"
           accept=".pdf,.doc,.docx"
           onChange={(e) => handleFileChange(e, 'resume')}
-          className="border p-2 rounded"
+          className="p-2 border rounded"
         />
       </label>
 
@@ -26,7 +26,7 @@ const DocumentUpload = ({ formData, setFormData }) => {
           type="file"
           accept=".pdf,.jpg,.png"
           onChange={(e) => handleFileChange(e, 'idProof')}
-          className="border p-2 rounded"
+          className="p-2 border rounded"
         />
       </label>
 
@@ -36,7 +36,7 @@ const DocumentUpload = ({ formData, setFormData }) => {
           type="file"
           accept=".pdf"
           onChange={(e) => handleFileChange(e, 'offerLetter')}
-          className="border p-2 rounded"
+          className="p-2 border rounded"
         />
       </label>
 
@@ -46,7 +46,7 @@ const DocumentUpload = ({ formData, setFormData }) => {
           type="file"
           accept=".jpg,.jpeg,.png"
           onChange={(e) => handleFileChange(e, 'photo')}
-          className="border p-2 rounded"
+          className="p-2 border rounded"
         />
       </label>
     </div>

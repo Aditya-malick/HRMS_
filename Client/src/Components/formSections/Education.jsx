@@ -3,58 +3,76 @@ import React from 'react';
 const EducationDetails = ({ formData, setFormData }) => {
   
   return (
-    <div className="space-y-6 p-4">
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll">
 
-        <div className="border p-4 rounded-md shadow-sm space-y-4">
+        <div className="p-4 space-y-4 border rounded-md shadow-sm">
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Degree</label>
+            <label className="block text-sm font-medium text-gray-700">highestQualification *</label>
             <input
+            name='highestQualification'
               type="text"
-              value={formData.degree}
+              value={formData.highestQualification}
               onChange={(e) => {
-                setFormData({...formData, degree: e.target.value})
+                setFormData({...formData, highestQualification: e.target.value})
               }}
-              className="mt-1 w-full border px-3 py-2 rounded-md"
+              className="w-full px-3 py-2 mt-1 border rounded-md"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Institution</label>
+            <label className="block text-sm font-medium text-gray-700">institute *</label>
             <input
+            name='institute'
               type="text"
-              value={formData.institution}
+              value={formData.institute}
               onChange={(e) => {
-                setFormData({...formData, institution: e.target.value})
+                setFormData({...formData, institute: e.target.value})
               }}
-              className="mt-1 w-full border px-3 py-2 rounded-md"
+              className="w-full px-3 py-2 mt-1 border rounded-md"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Year</label>
+            <label className="block text-sm font-medium text-gray-700">stream *</label>
             <input
+            name='stream'
+              type="text"
+              value={formData.stream}
+              onChange={(e) => {
+                setFormData({...formData, stream: e.target.value})
+              }}
+              className="w-full px-3 py-2 mt-1 border rounded-md"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Year *</label>
+            <input
+            name='year'
               type="text"
               value={formData.year}
               onChange={(e) => {
                 setFormData({...formData, year: e.target.value})
               }}
-              className="mt-1 w-full border px-3 py-2 rounded-md"
+              className="w-full px-3 py-2 mt-1 border rounded-md"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Grade</label>
+            <label className="block text-sm font-medium text-gray-700">Grade *</label>
             <input
+            name='grade'
               type="text"
               value={formData.grade}
               onChange={(e) => {
                 setFormData({...formData, grade: e.target.value})
               }}
-              className="mt-1 w-full border px-3 py-2 rounded-md"
+              className="w-full px-3 py-2 mt-1 border rounded-md"
             />
           </div>
         </div>

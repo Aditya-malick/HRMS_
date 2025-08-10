@@ -8,41 +8,42 @@ const JobDetails = ({ formData, setFormData }) => {
   };
 
   return (
-    <div className="space-y-6 p-6 bg-white shadow rounded-2xl">
-      <h2 className="text-2xl font-semibold text-gray-700">🏢 Job Details</h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Department</label>
+          <label className="block text-sm font-medium text-gray-700">Department *</label>
           <input
             type="text"
             name="department"
             value={formData.department}
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
             placeholder="Software Development"
+            required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Designation</label>
+          <label className="block text-sm font-medium text-gray-700">Designation *</label>
           <input
             type="text"
             name="designation"
             value={formData.designation }
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
             placeholder="Full Stack Developer"
+            required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Employee Type</label>
+          <label className="block text-sm font-medium text-gray-700">Employee Type *</label>
           <select
             name="employeeType"
             value={formData.employeeType}
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
+            required
           >
             <option value="">Select</option>
             <option value="Permanent">Permanent</option>
@@ -52,12 +53,13 @@ const JobDetails = ({ formData, setFormData }) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Employment Status</label>
+          <label className="block text-sm font-medium text-gray-700">Employment Status *</label>
           <select
-            name="employmentStatus"
-            value={formData.employmentStatus}
+            name="status"
+            value={formData.status}
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
+            required
           >
             <option value="">Select</option>
             <option value="Active">Active</option>
@@ -67,14 +69,15 @@ const JobDetails = ({ formData, setFormData }) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Employee ID</label>
+          <label className="block text-sm font-medium text-gray-700">Employee ID *</label>
           <input
             type="text"
             name="employeeId"
             value={formData.employeeId }
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
             placeholder="1001A"
+            required
           />
         </div>
 
@@ -85,7 +88,7 @@ const JobDetails = ({ formData, setFormData }) => {
             name="officialEmail"
             value={formData.officialEmail}
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
             placeholder="sumit@company.com"
           />
         </div>
@@ -97,7 +100,7 @@ const JobDetails = ({ formData, setFormData }) => {
             name="joiningDate"
             value={formData.joiningDate }
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
           />
         </div>
 
@@ -108,7 +111,7 @@ const JobDetails = ({ formData, setFormData }) => {
             name="reportingManager"
             value={formData.reportingManager }
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
             placeholder="Anirudh Kushari"
           />
         </div>
@@ -120,7 +123,7 @@ const JobDetails = ({ formData, setFormData }) => {
             name="workLocation"
             value={formData.workLocation}
             onChange={handleChange}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm"
             placeholder="Kolkata, WB"
           />
         </div>

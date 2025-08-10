@@ -20,7 +20,7 @@ router.post('/mark', async (req, res) => {
     if (existing) {
       existing.checkOut = timeAsDate;
       await existing.save();
-      return res.status(200).json({ message: 'Check-out time updated', attendance: existing });
+      return res.status(200).json({ message: 'Check-out  updated', attendance: existing });
     }
 
     const attendance = await Attendance.create({
@@ -30,7 +30,7 @@ router.post('/mark', async (req, res) => {
       date,
     });
 
-    res.status(201).json({ message: 'Attendance marked', attendance });
+    res.status(201).json({ message: 'Check-in marked', attendance });
   } catch (err) {
   console.error("Error in /mark route", err);
   res.status(500).json({ error: 'Failed to mark attendance', details: err.message });
@@ -57,12 +57,14 @@ router.get('/by-department/:departmentName', async (req, res) => {
 
 
 // GET - Fetch attendance for an employee
-router.get('/employee/:id', async (req, res) => {
+router.get('/employee/:employeeId', async (req, res) => {
   try {
-    const employee = await User.findOne({ employeeId: req.params.id });
+    console.log("data is :",req.params.employeeId)
+    const employee = await User.findOne({ employeeId: req.params.employeeId });
     if (!employee) return res.status(404).json({ error: 'Employee not found' });
 
     const attendance = await Attendance.find({ employeeId: employee._id }).sort({ date: -1 });
+    console.log(attendance)
     res.status(200).json(attendance);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch attendance' });

@@ -13,15 +13,15 @@ router.post('/login', async (req, res) => {
     console.log(user.role)
 
     if (!user) { return res.status(404).json({ massage: 'invalid cradentials' }) }
-    const encriptedpassword =  bcryptjs.compare(password, user.password)
-    console.log(encriptedpassword)
-    if(encriptedpassword){
-        console.log(user)
+    // const encriptedpassword =  bcryptjs.compare(password, user.password)
+    // console.log(encriptedpassword)
+    // if(encriptedpassword){
+    //     console.log(user)
         
         console.log('Login successful', user)
         return res.status(201).json(user)
         
-    }
+    // }
     // try {
     //     // bcryptjs.compare(password, user.password, (err, result) => {
     //     //     if (!result) { res.status(404).json({ massage: 'invalid cradentials' }) }

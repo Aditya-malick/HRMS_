@@ -37,10 +37,10 @@ const userData = JSON.parse(localStorage.getItem("userInfo"))
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden ">
     
       <div className="relative absolute inset-0 z-0 bg-gradient-to-r from-purple-300 via-bg-[#f107a3] to-bg-[#00d2ff]  opacity-70 blur-2xl"></div>
-      <div className="z-10 flex min-h-screen ">
+      <div className="z-10 flex min-h-screen">
         {/* Sidebar */}
         <aside className=" shadow-2xl border-2 border-gray-400 w-64 p-6 m-3 space-y-4 bg-[#F9F9F9] bg-opacity-30 backdrop-blur-md rounded-3xl ">
           <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-black via-pink-500 to-purple-600 animate-gradient">HRMS Admin</h2>
@@ -104,7 +104,7 @@ const userData = JSON.parse(localStorage.getItem("userInfo"))
 
           {/* Analytics */}
           <div className="grid grid-cols-2 gap-6 mb-8 md:grid-cols-3">
-            <div className="p-4  bg-white  border-purple-500 rounded shadow border-2 border-gray-400  space-y-4 bg-[#F9F9F9] bg-opacity-30 backdrop-blur-md rounded-3xl">
+            <div className="p-4  bg-white  border-purple-500 rounded shadow border-2 border-gray-400  space-y-4 bg-[#F9F9F9] bg-opacity-30 backdrop-blur-md rounded-3xl h-[200px]">
               <h3 className="text-sm text-gray-500">Total Employees</h3>
               <p className="text-2xl font-bold text-gray-800">64</p>
             </div>
@@ -119,6 +119,7 @@ const userData = JSON.parse(localStorage.getItem("userInfo"))
           </div>
 
           {/* Department List */}
+          <div className='p-2 overflow-y-scroll border-2 h-[300px] rounded-2xl'>
           <h1 className='text-2xl font-bold text-center text-purple-700'>Departments</h1>
           <section className='grid grid-cols-1 gap-6 mt-5 md:grid-cols-3'>
             {details.map((data) => (
@@ -143,6 +144,7 @@ const userData = JSON.parse(localStorage.getItem("userInfo"))
               </div>
             ))}
           </section>
+          </div>
         </main>
 
       </div>

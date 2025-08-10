@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { toast } from 'react-toastify';
+import axios from "axios";
 
 import PersonalInfo from "./formSections/PersonalInfo";
 import EducationDetails from "./formSections/Education";
@@ -13,90 +14,85 @@ import DocumentUpload from "./formSections/Doccuments";
 
 const CreateUserForm = () => {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     // Personal Info
-      firstName: "",
-      lastName: "",
-      gender: "",
-      dob: "",
-      bloodGroup: "",
-      maritalStatus: "",
-      nationality: "",
-      religion: "",
-      fatherName: "",
-      aadhaarNumber: "",
-      panNumber: "",
+    firstName: "",
+    lastName: "",
+    gender: "",
+    dob: "",
+    bloodGroup: "",
+    maritalStatus: "",
+    nationality: "",
+    religion: "",
+    fatherName: "",
+    aadhaarNumber: "",
+    panNumber: "",
 
     // 2. Contact Details
-      mobileNumber: "",
-      alternateNumber: "",
-      email: "",
-      currentAddress: "",
-      permanentAddress: "",
+    mobileNumber: "",
+    alternateNumber: "",
+    email: "",
+    currentAddress: "",
+    permanentAddress: "",
 
     // 3. Educational Qualifications
-      highestQualification: "",
-      yearOfPassing: "",
-      institute: "",
-      stream: "",
-      grade: "",
-      
-  
+    highestQualification: "",
+    yearOfPassing: "",
+    institute: "",
+    stream: "",
+    grade: "",
+
     // 4. Work Experience
-      previousEmployer: "",
-      designation: "",
-      from: "",
-      to: "",
-      totalExperience: "",
-      reasonForLeaving: "",
-      skillsUsed: [],
-  
+    previousEmployer: "",
+    designation: "",
+    from: "",
+    to: "",
+    totalExperience: "",
+    reasonForLeaving: "",
+    skillsUsed: "",
+
     // 5. Job Details (Current)
-      department: "",
-      designation: "",
-      employeeType: "",
-      status: "",
-      employeeId: "",
-      employeePassword: "",
-      officialEmail: "",
-      joiningDate: "",
-      reportingManager: "",
-      workLocation: "",
-  
+    department: "",
+    designation: "",
+    employeeType: "",
+    status: "",
+    employeeId: "",
+    officialEmail: "",
+    joiningDate: "",
+    reportingManager: "",
+    workLocation: "",
+
     // 6. Salary / CTC Details
-      gross: "",
-      basic: "",
-      hra: "",
-      otherAllowances: "",
-      bonuses: "",
-      pf: "",
-      esic: "",
-      netPay: "",
-      bankDetails: {
-        accountNumber: "",
-        ifsc: "",
-        bankName: "",
-      },
-      uan: "",
-      paymentMode: "",
-  
-    // 7. Document Uploads (URLs or Base64 or file reference keys)
-      resume: "",
-      photo: "",
-      aadhaar: "",
-      pan: "",
-      academicCertificates: [],
-      experienceLetters: [],
-      offerRelievingLetters: [],
-      bankPassbook: "",
-      otherDocuments: [String],
-  
+    gross: "",
+    basic: "",
+    hra: "",
+    otherAllowances: "",
+    bonuses: "",
+    pf: "",
+    esic: "",
+    netPay: "",
+    accountNumber: "",
+    ifsc: "",
+    bankName: "",
+    uan: "",
+    paymentMode: "",
+
+    // // 7. Document Uploads (URLs or Base64 or file reference keys)
+    // resume: "",
+    // photo: "",
+    // aadhaar: "",
+    // pan: "",
+    // academicCertificates: [],
+    // experienceLetters: [],
+    // offerRelievingLetters: [],
+    // bankPassbook: "",
+    // otherDocuments: [String],
+
     // 8. System Info (Optional - for IT)
-      laptopSerial: "",
-      emailAccess: "",
-      githubAccess: "",
-      portalCredentialsGiven: "",
+    laptopSerial: "",
+    emailAccess: "",
+    githubAccess: "",
+    portalCredentialsGiven: "",
   });
 
   const [page, setPage] = useState(0);
@@ -109,7 +105,7 @@ const CreateUserForm = () => {
     "Job Details",
     "Salary Details",
     "System Info",
-    "Document Uploads",
+    // "Document Uploads",
   ];
 
   const PageDisplay = () => {
@@ -117,19 +113,19 @@ const CreateUserForm = () => {
       case 0:
         return <PersonalInfo formData={formData} setFormData={setFormData} />;
       case 1:
-        return <EducationDetails formData={formData} setFormData={setFormData} />;
+        return <EducationDetails formData={formData} setFormData={setFormData} />
       case 2:
-        return <ContactInfo formData={formData} />; // Read-only review page
+        return <ContactInfo formData={formData} setFormData={setFormData} />; // Read-only review page
       case 3:
-        return <ExperienceDetails formData={formData} />; // Read-only review p
+        return <ExperienceDetails formData={formData} setFormData={setFormData}/>; // Read-only review p
       case 4:
         return <JobDetails formData={formData} setFormData={setFormData} />;
       case 5:
         return <SalaryDetails formData={formData} setFormData={setFormData} />;
       case 6:
         return <SystemInfo formData={formData} setFormData={setFormData} />;
-      case 7:
-        return <DocumentUpload formData={formData} setFormData={setFormData} />;
+      // case 7:
+      //   return <DocumentUpload formData={formData} setFormData={setFormData} />;
       default:
         return <div>Unknown Page</div>;
     }
@@ -139,82 +135,101 @@ const CreateUserForm = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:8080/api/users/create", formData);
+      console.log('in try catch',formData)
+      const res = await axios.post(
+        "http://localhost:8080/api/users/create",
+        formData
+      );
 
       if (res.status === 200 || res.status === 201) {
-        alert("User created successfully!");
-        navigate("/user-list"); // navigate to user list or dashboard
+        console.log("success")
+        toast.success("✅ User Created!", { position: "top-right" });
+        
       } else {
         alert(res.data.message || "Error creating user");
+        toast.error("❌ Somthing went rong!", { position: "bottom-left" });
+
       }
     } catch (error) {
       console.error("Submit error:", error);
-      alert("Something went wrong");
+      toast.error("❌ Somthing went rong!", { position: "bottom-left" });
+
     }
   };
 
   return (
-    <div className="flex items-center justify-center p-10 overflow-y-clip">
+    //Main div
+    <div className="flex justify-center pt-12 h-[100vh]">
 
-    <div className="w-[90%] p-5 bg-purple-400 rounded-tr-2xl rounded-tl-2xl overflow-y-clip ">
-      <div className="h-5 p-1 m-3 bg-white rounded-lg">
-        <div
-          style={{
-            width: `${((page + 1) / FormTitles.length) * 100}%`,
-            height: "100%",
-            background: "#3b82f6",
-            transition: "width 0.3s",
-          }}
-          className="rounded-lg"
-        />
-      </div>
-
-      <div className="form-container">
-        <div className="m-4">
-          <h1 className="text-2xl font-bold text-center ">{FormTitles[page]}</h1>
-        </div>
-
-        <form className="space-y-4 overflow-y-hidden body" onSubmit={handleSubmit}>
-
-          <div>
-            {PageDisplay()}
+      {/* form conatainer */}
+      <div className="w-[90%] py-3 px-10 
+      bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg
+      bg-purple-400 rounded-tr-2xl rounded-tl-2xl ">
+        
+        {/* progress bar */}
+        <div className="h-[5%] ">
+          <div className="h-5 p-1 bg-white rounded-lg">
+            <div
+              style={{
+                width: `${((page + 1) / FormTitles.length) * 100}%`,
+                height: "100%",
+                background: "#3b82f6",
+                transition: "width 0.3s",
+              }}
+              className="rounded-lg"
+            />
           </div>
+        </div>
+        
+          {/* form taitle */ }
+        <div className=" h-[5%] mb-2 ">
+          <h1 className="text-2xl font-bold text-center ">
+            {FormTitles[page]}
+          </h1>
+        </div>
+        
+          {/* form  */ }
+        <form
+          className="  h-[80%] "
+          onSubmit={handleSubmit}
+        >
+          {PageDisplay()}
+        </form>
+          
+          {/* Button conatainer */ }
+        <div className="flex justify-between h-[7%] w-[100%] mt-2">
+          <button
+            disabled={page === 0}
+            className="px-4 py-2 text-white bg-blue-600 rounded "
+            onClick={(e) => {
+              e.preventDefault();
+              setPage((currPage) => currPage - 1);
+            }}
+          >
+            Prev
+          </button>
 
-          <div className="flex justify-between mt-4 footer">
-
+          {page === FormTitles.length - 1 ? (
             <button
-              disabled={page === 0}
-              className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+              type="submit"
+              className="px-4 py-2 text-white bg-blue-600 rounded"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          ) : (
+            <button
+              className="px-4 py-2 text-white bg-blue-600 rounded"
               onClick={(e) => {
                 e.preventDefault();
-                setPage((currPage) => currPage - 1);
+                setPage((currPage) => currPage + 1);
               }}
             >
-              Prev
+              Next
             </button>
-
-            {page === FormTitles.length - 1 ? (
-              <button
-                type="submit"
-                className="px-4 py-2 text-white bg-blue-600 rounded"
-              >
-                Submit
-              </button>
-            ) : (
-              <button
-                className="px-4 py-2 text-white bg-blue-500 rounded"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage((currPage) => currPage + 1);
-                }}
-              >
-                Next
-              </button>
-            )}
-          </div>
-        </form>
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

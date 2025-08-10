@@ -2,56 +2,61 @@ import React from 'react';
 
 const SystemInfo = ({ formData, setFormData }) => {
   return (
-    <div className="flex flex-col gap-4 w-full p-4">
-      <h2 className="text-xl font-semibold mb-2">System Information</h2>
+    <div className="p-4 bg-white  h-[100%] rounded-3xl overflow-y-scroll">
+      <h2 className="mb-2 text-xl font-semibold">System Information</h2>
 
       <label className="flex flex-col">
-        System Assigned
+         laptop Serial
         <input
+        name='laptopSerial'
           type="text"
-          value={formData.systemAssigned}
+          value={formData.laptopSerial}
           onChange={(e) =>
-            setFormData({ ...formData, systemAssigned: e.target.value })
+            setFormData({ ...formData, laptopSerial: e.target.value })
           }
           placeholder="e.g., Dell Latitude 3420"
-          className="border p-2 rounded"
+          className="p-2 border rounded"
         />
       </label>
 
       <label className="flex flex-col">
-        Asset ID
+         emailAccess
         <input
+        name='emailAccess'
           type="text"
-          value={formData.assetId}
+          value={formData.emailAccess}
           onChange={(e) =>
-            setFormData({ ...formData, assetId: e.target.value })
+            setFormData({ ...formData, emailAccess: e.target.value })
+          }
+          placeholder="e.g., Dell Latitude 3420"
+          className="p-2 border rounded"
+        />
+      </label>
+
+      <label className="flex flex-col">
+        githubAccess
+        <input
+        name='githubAccess'
+          type="text"
+          value={formData.githubAccess}
+          onChange={(e) =>
+            setFormData({ ...formData, githubAccess: e.target.value })
           }
           placeholder="Enter asset ID"
-          className="border p-2 rounded"
+          className="p-2 border rounded"
         />
       </label>
-
+      
       <label className="flex flex-col">
-        OS Installed
-        <input
-          type="text"
-          value={formData.osInstalled}
+        portal Credentials Given *
+        <select 
+        name='portalCredentialsGiven'
+          value={formData.portalCredentialsGiven}
           onChange={(e) =>
-            setFormData({ ...formData, osInstalled: e.target.value })
+            setFormData({ ...formData, portalCredentialsGiven: e.target.value })
           }
-          placeholder="e.g., Windows 11 Pro"
-          className="border p-2 rounded"
-        />
-      </label>
-
-      <label className="flex flex-col">
-        System Access Level
-        <select
-          value={formData.accessLevel}
-          onChange={(e) =>
-            setFormData({ ...formData, accessLevel: e.target.value })
-          }
-          className="border p-2 rounded"
+          className="p-2 border rounded"
+          required
         >
           <option value="">Select access level</option>
           <option value="Employee">Employee</option>

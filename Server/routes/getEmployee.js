@@ -6,7 +6,7 @@ router.get('/:departmentName', async (req, res) => {
     console.log(req.params.departmentName)
     const department = req.params.departmentName
     try {
-          const employee = await userModel.find({"jobDetails.department": department })
+          const employee = await userModel.find({ department })
           console.log(employee)
           res.status(201).json(employee)
     }catch(err){
